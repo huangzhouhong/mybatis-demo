@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.hzh.mybatis.blog.BlogMapper">
+	<sql id="findActiveBlogLike">
+		SELECT * FROM BLOG WHERE state = 'ACTIVE'
+		AND title like #?{title}
+		AND author_name like #?{author.userName}
+	</sql>
+
+	<sql id="findBlogLike">
+		SELECT * FROM BLOG
+		WHERE state = #?{state}
+		AND title like #?{title}
+		AND author_name like #?{author.userName}
+	</sql>
+
+	<sql id="selectPostIn">
+		SELECT *
+		FROM POST P
+		WHERE post_id in (#{ids})
+	</sql>
+
+	<sql id="updateAuthorIfNecessary">
+		update Author set
+			user_name=#?{username},
+			password=#?{password},
+			email=#?{email},
+			mobile=#?{mobile}
+		where author_id=#{authorId}
+	</sql>
+	
+	<sql id="insert">
+		insert into blog (blog_id,title) values (#{blogId},#{title})
+	</sql>
+</mapper>

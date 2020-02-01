@@ -1,0 +1,1 @@
+java -cp ".;D:\Tools\mybatis-generator\mybatis-generator-core-1.4.0.jar;D:\Tools\mybatis-generator\mysql-connector-java-8.0.18.jar" org.mybatis.generator.api.ShellRunner -configfile generator.xml -overwrite
