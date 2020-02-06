@@ -19,5 +19,6 @@ public interface BlogMapper {
 	@Sql("delete from author where id=#{id}")
 	int delete(String id);
 
+	@Sql("insert into blog (blog_id,title) values (#{blogId},#{title})")
 	int insert(Blog... blogs);
 }
